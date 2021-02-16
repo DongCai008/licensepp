@@ -71,8 +71,17 @@ target_include_directories (licensepp-lib PUBLIC $<INSTALL_INTERFACE:include>)
 target_link_libraries (licensepp-lib
     ${CRYPTOPP_LIBRARIES}
 )
-
 set_target_properties (licensepp-lib PROPERTIES OUTPUT_NAME "licensepp")
+
+add_library (licensepp-lib-static STATIC ${LICENSEPP_SOURCE_FILES})
+set_target_properties (licensepp-lib-static PROPERTIES
+    VERSION ${LICENSEPP_SOVERSION}
+)
+target_link_libraries (licensepp-lib-static
+    ${CRYPTOPP_LIBRARIES}
+)
+set_target_properties (licensepp-lib-static PROPERTIES OUTPUT_NAME "licensepp")
+
 install (TARGETS licensepp-lib EXPORT licensepp-config DESTINATION lib)
 install (FILES license++/base-license-manager.h DESTINATION "include/license++")
 install (FILES license++/issuing-authority.h DESTINATION "include/license++")
