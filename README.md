@@ -45,7 +45,7 @@ License++ is software licensing library that provides an abstract way to secure 
      cd licensepp
      mkdir build
      cd build
-     cmake ..
+     cmake .. -DCRYPTOPP_INCLUDE_DIR=../../ -DCRYPTOPP_ROOT_DIR=../../cryptopp
      make
      sudo make install
 
